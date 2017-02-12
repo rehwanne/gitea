@@ -3,8 +3,8 @@ MAINTAINER Thomas Boerger <thomas@webhippie.de>
 
 EXPOSE 22 3000
 
-RUN apk update && \
-  apk add \
+RUN apk add \
+    --no-cache \
     su-exec \
     ca-certificates \
     sqlite \
@@ -15,8 +15,6 @@ RUN apk update && \
     curl \
     openssh \
     tzdata && \
-  rm -rf \
-    /var/cache/apk/* && \
   addgroup \
     -S -g 1000 \
     git && \
